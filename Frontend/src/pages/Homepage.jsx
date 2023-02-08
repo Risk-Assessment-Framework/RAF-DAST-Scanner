@@ -151,10 +151,7 @@ const Homepage = () => {
                 application security testing (DAST) and Risk Assessment tools.
               </p>
               <div className="flex items-center justify-center ">
-                <form className="mt-8 sm:flex">
-                  <label htmlFor="email-address" className="sr-only">
-                    Email address
-                  </label>
+                <form className="mt-8 sm:flex" action="/security-audit" method="GET">
                   <input
                     type="text"
                     name="site"
