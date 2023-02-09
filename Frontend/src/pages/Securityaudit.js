@@ -2,8 +2,11 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { dashboardData } from "../mock/dashboard-data";
 import Reports from "../components/Reports";
+import { useSearchParams } from "react-router-dom";
 
 const Securityaudit = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   return (
     <div className="min-h-full">
       <div className="bg-gray-800 pb-32">
@@ -29,11 +32,11 @@ const Securityaudit = () => {
                     Showing results for
                   </h2>
                   <div>
-                    <p className="inline text-2xl font-bold tracking-tight text-indigo-600 sm:block sm:text-3xl">
-                      {dashboardData.domain}
+                    <p className="text-2xl font-bold tracking-tight truncate sm:truncate text-indigo-600 sm:block sm:text-3xl">
+                      {searchParams.get("site")}
                     </p>
                   </div>
-                  <p className="text-sm font-medium leading-8 text-neutral-600 sm:text-base">
+                  <p className="text-sm font-medium leading-4 md:leading-8 text-neutral-600 sm:text-base">
                     Hosted at {dashboardData.ipv4} and {dashboardData.ipv6}
                   </p>
                   <form
