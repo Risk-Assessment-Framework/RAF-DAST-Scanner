@@ -33,7 +33,7 @@ const Securityaudit = () => {
                       {dashboardData.domain}
                     </p>
                   </div>
-                  <p className="text-sm font-medium leading-8 text-neutral-600 sm:text-lg">
+                  <p className="text-sm font-medium leading-8 text-neutral-600 sm:text-base">
                     Hosted at {dashboardData.ipv4} and {dashboardData.ipv6}
                   </p>
                   <form
