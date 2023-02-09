@@ -32,10 +32,10 @@ const Securityaudit = () => {
                     <p className="inline text-2xl font-bold tracking-tight text-indigo-600 sm:block sm:text-3xl">
                       {dashboardData.domain}
                     </p>
-                    <p className=" text-md font-medium leading-8 text-neutral-600">
-                      Hosted at {dashboardData.ipv4} and {dashboardData.ipv6}
-                    </p>
                   </div>
+                  <p className="text-sm font-medium leading-8 text-neutral-600 sm:text-lg">
+                    Hosted at {dashboardData.ipv4} and {dashboardData.ipv6}
+                  </p>
                   <form
                     className="mt-8 sm:flex"
                     action="/security-audit"

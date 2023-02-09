@@ -80,7 +80,7 @@ const Homepage = () => {
         <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <Dialog.Panel
             focus="true"
-            className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden"
+            className="fixed inset-0 z-10 overflow-y-auto bg-gray-100 px-6 py-6 lg:hidden"
           >
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
@@ -146,7 +146,7 @@ const Homepage = () => {
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 OWASP Risk Assessment Framework DAST Scanner
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-600">
+              <p className="mt-6 text-sm leading-8 text-gray-600 sm:text-lg">
                 The OWASP Risk Assessment Framework consist of Dynamic
                 application security testing (DAST) and Risk Assessment tools.
               </p>
