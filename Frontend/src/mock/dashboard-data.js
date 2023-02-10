@@ -1,11 +1,5 @@
-export const homeNavigation = [
-  { name: "Scanner Types", href: "#" },
-  { name: "Documentation", href: "#" },
-  { name: "Features", href: "#" },
-];
-
 export const user = {
-  name: "Tom Cook",
+  name: "Shubhayu Majumdar",
   email: "tom@example.com",
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -23,8 +17,14 @@ export const userNavigation = [
   { name: "Sign out", href: "/" },
 ];
 
+export const homeNavigation = [
+  { name: "Scanner Types", href: "#" },
+  { name: "Documentation", href: "#" },
+  { name: "Features", href: "#" },
+];
+
 export const dashboardData = {
-  domain: "google.com",
+  domain: "example.com",
   title: "Security Audit",
   ipv4: "216.239.38.117",
   ipv6: "2001:4860:4802:32::75",

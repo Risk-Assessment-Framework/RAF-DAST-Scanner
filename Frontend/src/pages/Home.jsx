@@ -1,10 +1,12 @@
 import React from "react";
+/* This example requires Tailwind CSS v3.0+ */
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { homeNavigation } from "../mock/dashboard-data";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 
-const Homepage = () => {
+const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -80,7 +82,7 @@ const Homepage = () => {
         <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <Dialog.Panel
             focus="true"
-            className="fixed inset-0 z-10 overflow-y-auto bg-gray-100 px-6 py-6 lg:hidden"
+            className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden"
           >
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
@@ -146,12 +148,13 @@ const Homepage = () => {
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 OWASP Risk Assessment Framework DAST Scanner
               </h1>
-              <p className="mt-6 text-sm leading-8 text-gray-600 sm:text-lg">
+              <p className="mt-6 text-lg leading-8 text-gray-600">
                 The OWASP Risk Assessment Framework consist of Dynamic
                 application security testing (DAST) and Risk Assessment tools.
               </p>
+
               <div className="flex items-center justify-center ">
-                <form className="mt-8 sm:flex" action="/security-audit" method="GET">
+                <form className="mt-8 sm:flex" action="/dashboard" method="GET">
                   <input
                     type="text"
                     name="site"
@@ -204,4 +207,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;

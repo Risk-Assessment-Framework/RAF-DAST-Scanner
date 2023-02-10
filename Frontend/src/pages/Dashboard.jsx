@@ -1,12 +1,12 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { dashboardData } from "../mock/dashboard-data";
-import Reports from "../components/Reports";
+import Reports from "./Reports";
 import { useSearchParams } from "react-router-dom";
 
-const Securityaudit = () => {
+const Dashboard = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
+  console.log(searchParams.get("site"));
   return (
     <div className="min-h-full">
       <div className="bg-gray-800 pb-32">
@@ -33,7 +33,9 @@ const Securityaudit = () => {
                   </h2>
                   <div>
                     <p className="text-2xl font-bold tracking-tight truncate sm:truncate text-indigo-600 sm:block sm:text-3xl">
-                      {searchParams.get("site")}
+                      {searchParams.get("site")
+                        ? searchParams.get("site")
+                        : dashboardData.domain}
                     </p>
                   </div>
                   <p className="text-sm font-medium leading-4 md:leading-8 text-neutral-600 sm:text-base">
@@ -41,7 +43,7 @@ const Securityaudit = () => {
                   </p>
                   <form
                     className="mt-8 sm:flex"
-                    action="/security-audit"
+                    action="/dashboard"
                     method="GET"
                   >
                     <input
@@ -80,4 +82,4 @@ const Securityaudit = () => {
   );
 };
 
-export default Securityaudit;
+export default Dashboard;

@@ -8,7 +8,11 @@ import {
 import { Menu, Transition } from "@headlessui/react";
 import { auditData } from "../mock/dashboard-data";
 
-const Reports = () => {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+export default function Reports() {
   return (
     <div className="overflow-hidden bg-white shadow sm:rounded-md rounded-md">
       <ul role="list" className="divide-y divide-gray-200">
@@ -28,7 +32,7 @@ const Reports = () => {
                           : position.type === "Medium"
                           ? "bg-yellow-100 text-yellow-800"
                           : "bg-green-100 text-green-800"
-                      } px-2 text-xs font-semibold leading-5`}
+                      }  px-2 text-xs font-semibold leading-5 `}
                     >
                       {position.type}
                     </p>
@@ -86,6 +90,4 @@ const Reports = () => {
       </ul>
     </div>
   );
-};
-
-export default Reports;
+}
