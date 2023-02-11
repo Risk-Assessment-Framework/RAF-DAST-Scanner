@@ -1,9 +1,10 @@
 import React from "react";
+import { imageAssets } from "../helper/assets";
 
 const Login = () => {
   return (
     <>
-      <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 bg-gray-100">
+      <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 ">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <a href="/">
             <img
@@ -118,7 +119,7 @@ const Login = () => {
               <div className="mt-6 grid grid-cols-1">
                 <div>
                   <a
-                    href="#"
+                    href="/dashboard"
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Facebook</span>

@@ -1,4 +1,4 @@
 export const imageAssets = {
   googleLogo: require("../assets/google-logo.png"),
-  owaspNetworkLogo: require("https://owasp.org/assets/images/logo.svg"),
+  // owaspLogo: require("../assets/owasp-logo.svg"),
 };

@@ -1,10 +1,12 @@
 import React from "react";
+/* This example requires Tailwind CSS v3.0+ */
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { homeNavigation } from "../mock/dashboard-data";
+import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
 
-const Homepage = () => {
+const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -150,11 +152,9 @@ const Homepage = () => {
                 The OWASP Risk Assessment Framework consist of Dynamic
                 application security testing (DAST) and Risk Assessment tools.
               </p>
+
               <div className="flex items-center justify-center ">
-                <form className="mt-8 sm:flex">
-                  <label htmlFor="email-address" className="sr-only">
-                    Email address
-                  </label>
+                <form className="mt-8 sm:flex" action="/dashboard" method="GET">
                   <input
                     type="text"
                     name="site"
@@ -207,4 +207,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Home;
