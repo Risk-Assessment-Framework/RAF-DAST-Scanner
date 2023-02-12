@@ -10,8 +10,6 @@ function classNames(...classes) {
 
 const Navbar = () => {
   const { user, authState, signOutUser } = useUserAuth();
-  // const authState = false;
-  console.log("Auth State: ", authState);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -21,11 +19,13 @@ const Navbar = () => {
               <div className="flex h-16 items-center justify-between px-4 sm:px-0">
                 <div className="flex items-center">
                   <div className="flex-shrink-0">
-                    <img
-                      className="h-8 w-8"
-                      src="https://res.cloudinary.com/bizzaboprod/image/upload/q_auto:best,c_crop,g_custom/v1597460789/zlmcxgwknrwni3bimuwu.png"
-                      alt="DAST Scanner"
-                    />
+                    <a href="/">
+                      <img
+                        className="h-8 w-8"
+                        src="https://res.cloudinary.com/bizzaboprod/image/upload/q_auto:best,c_crop,g_custom/v1597460789/zlmcxgwknrwni3bimuwu.png"
+                        alt="DAST Scanner"
+                      />
+                    </a>
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-10 flex items-baseline space-x-4">
