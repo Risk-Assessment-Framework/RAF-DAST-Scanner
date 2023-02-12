@@ -6,7 +6,6 @@ import { useSearchParams } from "react-router-dom";
 
 const Dashboard = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams.get("site"));
   return (
     <div className="min-h-full">
       <div className="bg-gray-800 pb-32">
@@ -34,7 +33,7 @@ const Dashboard = () => {
                   <div>
                     <p className="text-2xl font-bold tracking-tight truncate sm:truncate text-indigo-600 sm:block sm:text-3xl">
                       {searchParams.get("site")
-                        ? searchParams.get("site")
+                        ? searchParams.get("site").toLowerCase()
                         : dashboardData.domain}
                     </p>
                   </div>
