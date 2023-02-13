@@ -1,4 +1,4 @@
-export const user = {
+export const demouser = {
   name: "Shubhayu Majumdar",
   email: "tom@example.com",
   imageUrl:
@@ -14,7 +14,7 @@ export const navigation = [
 export const userNavigation = [
   // { name: "Your Profile", href: "#" },
   // { name: "Settings", href: "#" },
-  { name: "Sign out", href: "/" },
+  { name: "Sign out", href: "#" },
 ];
 
 export const homeNavigation = [

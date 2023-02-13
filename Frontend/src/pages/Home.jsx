@@ -1,14 +1,14 @@
 import React from "react";
-/* This example requires Tailwind CSS v3.0+ */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { homeNavigation } from "../mock/dashboard-data";
-import { ExclamationCircleIcon } from "@heroicons/react/20/solid";
+import { useUserAuth } from "../context/UserAuthContext";
 
 const Home = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const { authState } = useUserAuth();
+  console.log(authState);
   return (
     <div className="isolate">
       <div className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]">
@@ -70,14 +70,27 @@ const Home = () => {
               </a>
             ))}
           </div>
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <a
-              href="/login"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Log in <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+          {authState ? (
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <a
+                href="/dashboard"
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Dashboard
+              </a>
+            </div>
+          ) : (
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+              <a
+                href="/login"
+                // href="#"
+                // onClick={() => loginWithRedirect()}
+                className="text-sm font-semibold leading-6 text-gray-900"
+              >
+                Log in <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          )}
         </nav>
         <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <Dialog.Panel
@@ -115,14 +128,25 @@ const Home = () => {
                     </a>
                   ))}
                 </div>
-                <div className="py-6">
-                  <a
-                    href="/login"
-                    className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
-                  >
-                    Log in
-                  </a>
-                </div>
+                {authState ? (
+                  <div className="py-6">
+                    <a
+                      href="/dashboard"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Dashboard
+                    </a>
+                  </div>
+                ) : (
+                  <div className="py-6">
+                    <a
+                      href="/login"
+                      className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-6 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Log in
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </Dialog.Panel>
