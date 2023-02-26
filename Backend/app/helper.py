@@ -1,5 +1,12 @@
 from bs4 import BeautifulSoup
 from pprint import pprint
+import json
+
+
+def dict_to_json_file(my_dict, filename):
+    """Write a dictionary to a JSON file."""
+    with open(filename, 'w') as file:
+        json.dump(my_dict, file)
 
 
 def parse_zap_report(filename):

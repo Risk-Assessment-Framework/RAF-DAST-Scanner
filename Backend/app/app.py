@@ -4,6 +4,7 @@ from zapv2 import ZAPv2
 import os
 import urllib.request
 import tarfile
+from helper import dict_to_json_file
 
 # Define a global variable to store the ZAP API key
 API_KEY = 'mk5f08maq9eh575sem'
@@ -34,10 +35,10 @@ def verify_zap_exists():
     """_summary_: Download ZAP.
     """
     filename = "ZAP_2.12.0_Linux.tar.gz"
-    extract_dir = "ZAP_2.12.0"
-    zap_dirname = "zap"
+    extractDir = "ZAP_2.12.0"
+    zapDirname = "zap"
 
-    if os.path.exists(os.path.join(".", zap_dirname)):
+    if os.path.exists(os.path.join(".", zapDirname)):
         print("ZAP package already exists in current directory.")
     else:
         print("ZAP package not found in current directory. Downloading...")
@@ -52,8 +53,8 @@ def verify_zap_exists():
         print("Extraction complete.")
 
         print("Renaming directory...")
-        os.rename(os.path.join(".", extract_dir),
-                  os.path.join(".", zap_dirname))
+        os.rename(os.path.join(".", extractDir),
+                  os.path.join(".", zapDirname))
         print("Renaming complete.")
 
         print("Deleting tar.gz file...")
@@ -78,8 +79,9 @@ def get_data():
 
     print('Spider has completed!')
     # Prints the URLs the spider has crawled
-    results = zap.spider.results(scanID)
-    return results
+    spiderResults = zap.spider.results(scanID)
+    dict_to_json_file({"spiderResults": spiderResults}, "spiderResults.json")
+    return jsonify({"status": True})
 
 
 if __name__ == '__main__':

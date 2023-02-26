@@ -16,8 +16,7 @@ def test_api():
     response = requests.post(url, json=payload)
 
     assert response.status_code == 200
-    # assert response.json() == {'result': 'success'}
-    print(response.json())
+    assert response.json()['status']
 
 
 if __name__ == '__main__':
