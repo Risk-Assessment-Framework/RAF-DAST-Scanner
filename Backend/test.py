@@ -1,18 +1,10 @@
 import requests
 from app.helper import parse_zap_report
-from pprint import pprint
-
-
-def test_parse():
-    filename = 'app/report.html'
-    result = parse_zap_report(filename)
-    # pprint(result[0])
-    # print(len(result))
 
 
 def test_api():
     url = 'http://localhost:5000/spider'
-    payload = {'url': 'https://appsec.asia/'}
+    payload = {'url': 'https://public-firing-range.appspot.com'}
     response = requests.post(url, json=payload)
 
     assert response.status_code == 200
@@ -21,4 +13,3 @@ def test_api():
 
 if __name__ == '__main__':
     test_api()
-    # test_parse()

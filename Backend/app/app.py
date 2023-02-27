@@ -5,6 +5,7 @@ import os
 import urllib.request
 import tarfile
 from helper import dict_to_json_file
+from pprint import pprint
 
 # Define a global variable to store the ZAP API key
 API_KEY = 'mk5f08maq9eh575sem'
@@ -78,9 +79,33 @@ def get_data():
         time.sleep(1)
 
     print('Spider has completed!')
-    # Prints the URLs the spider has crawled
-    spiderResults = zap.spider.results(scanID)
-    dict_to_json_file({"spiderResults": spiderResults}, "spiderResults.json")
+    print('Passive Scanning target {}'.format(url))
+    while int(zap.pscan.records_to_scan) > 0:
+        # Loop until the passive scan has finished
+        print('Records to passive scan : ' + zap.pscan.records_to_scan)
+        time.sleep(2)
+
+    print('Passive Scan completed')
+
+    # Save all scan results to a file
+    dict_to_json_file({"Scan Results": {
+                      "alerts": zap.alert.alerts(baseurl=url)}}, "scan_results.json")
+
+    return jsonify({"status": True})
+
+
+@app.route('/pscan', methods=['POST'])
+def passive_scan():
+    while int(zap.pscan.records_to_scan) > 0:
+        # Loop until the passive scan has finished
+        print('Records to passive scan : ' + zap.pscan.records_to_scan)
+        time.sleep(2)
+
+    print('Passive Scan completed')
+
+    # Print Passive scan results/alerts
+    dict_to_json_file({"Passive Scan": {"hosts": zap.core.hosts,
+                      "alerts": zap.core.alerts()}}, "passive_scan_results.json")
     return jsonify({"status": True})
 
 
