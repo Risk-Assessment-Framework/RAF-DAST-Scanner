@@ -2,6 +2,56 @@
 import time
 from zapv2 import ZAPv2
 
+
+def spider_target(TARGET, API_KEY):
+    zap = ZAPv2(apikey=API_KEY)
+    print("Starting Spider for target " + TARGET)
+    scan_id = zap.spider.scan(TARGET)
+    while int(zap.spider.status(scan_id)) < 100:
+        print("Spider Status completed: {} % ".format(
+            zap.spider.status(scan_id)))
+        time.sleep(1)
+
+    print(map(str, zap.spider.results(scan_id)))
+    return map(str, zap.spider.results(scan_id))
+
+
+def passive_scan(TARGET, API_KEY):
+
+    # Figure this one out
+
+    zap = ZAPv2(apikey=API_KEY, proxies={
+                'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
+    while int(zap.pscan.records_to_scan) > 0:
+        print("Records to passive scan: " + str(zap.pscan.records_to_scan))
+        time.sleep(2)
+
+    print("Passive Scan Complete")
+
+    print('Hosts: {}'.format(', '.join(zap.core.hosts)))
+    print('Alerts: ')
+    print(zap.core.alerts)
+    return (zap.core.alerts)
+
+
+def active_scan(TARGET, API_KEY):
+    zap = ZAPv2(apikey=API_KEY, proxies={
+                'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
+
+    print("Active Scan for Target: {}".format(TARGET))
+    scan_id = zap.ascan.scan(TARGET)
+
+    while int(zap.ascan.status(scan_id)) < 100:
+        print("Active scan completed: {} % ".format(zap.ascan.status(scan_id)))
+        time.sleep(5)
+
+    print("Active Scan Completed")
+    print("Hosts: {}".format(', '.join(zap.core.hosts)))
+    print('Alerts: ')
+    print(zap.core.alerts)
+    return (zap.core.alerts)
+
+
 # The URL of the application to be tested
 target = 'https://public-firing-range.appspot.com'
 # Change to match the API key set in ZAP, or use None if the API key is disabled
