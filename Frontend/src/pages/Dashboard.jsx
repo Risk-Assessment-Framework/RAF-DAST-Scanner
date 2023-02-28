@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { dashboardData } from "../mock/dashboard-data";
+import { dashboardData, scannerData } from "../mock/dashboard-data";
 import Reports from "./Reports";
 import { useSearchParams } from "react-router-dom";
 
@@ -69,7 +69,13 @@ const Dashboard = () => {
 
           {/* Reports Section */}
           <div className="pt-4">
-            <Reports />
+            <Reports
+              url={
+                searchParams.get("site")
+                  ? searchParams.get("site").toLowerCase()
+                  : "http://example.com/"
+              }
+            />
           </div>
 
           {/* /End replace */}

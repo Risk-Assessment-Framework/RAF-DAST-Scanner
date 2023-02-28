@@ -1,3 +1,5 @@
 Frontend/node_modules
 Frontend/src-old
 Frontend/src/configs/firebase-config.js
+.vscode
+Backend/
