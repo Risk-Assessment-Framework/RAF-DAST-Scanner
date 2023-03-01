@@ -93,3 +93,44 @@ export const auditData = [
     ],
   },
 ];
+
+export const scannerData = {
+  "Scan Results": {
+    alerts: [
+      {
+        sourceid: "3",
+        other: "",
+        method: "GET",
+        evidence: "",
+        pluginId: "10020",
+        cweid: "1021",
+        confidence: "Medium",
+        wascid: "15",
+        description:
+          "The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.",
+        messageId: "28",
+        inputVector: "",
+        url: "https://public-firing-range.appspot.com/address/index.html",
+        tags: {
+          OWASP_2021_A05:
+            "https://owasp.org/Top10/A05_2021-Security_Misconfiguration/",
+          "WSTG-v42-CLNT-09":
+            "https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/11-Client-side_Testing/09-Testing_for_Clickjacking",
+          OWASP_2017_A06:
+            "https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html",
+        },
+        reference:
+          "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options",
+        solution:
+          "Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.\nIf you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.",
+        alert: "Missing Anti-clickjacking Header",
+        param: "X-Frame-Options",
+        attack: "",
+        name: "Missing Anti-clickjacking Header",
+        risk: "Medium",
+        id: "0",
+        alertRef: "10020-1",
+      },
+    ],
+  },
+};
