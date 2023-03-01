@@ -3,7 +3,7 @@ env:
   - excludePaths: []
     name: baseline
     urls:
-    - https://www.example.com
+    - https://appsec.asia/
   parameters:
     failOnError: true
     progressToStdout: false
@@ -14,7 +14,7 @@ jobs:
   type: passiveScan-config
 - parameters:
     maxDuration: 1
-    url: https://www.example.com
+    url: https://appsec.asia/
   type: spider
 - parameters:
     maxDuration: 0
@@ -27,7 +27,7 @@ jobs:
 - parameters:
     reportDescription: ''
     reportDir: /zap/wrk/
-    reportFile: report.html
+    reportFile: report.json
     reportTitle: ZAP Scanning Report
-    template: traditional-html
+    template: traditional-json
   type: report
