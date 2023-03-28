@@ -27,3 +27,12 @@ The API provides two routes:
 ## Testing
 You can test if the api is running by running ```python test.py``` after running the API
 
+## Contribute
+Contributions to the project are welcome. To contribute:
+
+1. Fork the repository.
+2. Make changes to your fork.
+3. Submit a pull request with your changes.
+
+## Contact
+
