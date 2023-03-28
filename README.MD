@@ -9,11 +9,13 @@ The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
 2. Install the required packages: ```pip install -r requirements.txt```
 3. Start the API by running python api.py.
 
-## To Do tasks as part of GSOC'23
+## To Do list
 - [ ] Implement a URL scan API using existing OWASP ZAP type scanners or other open source scanners.
 - [ ] Implement different vulnerability tests
 - [ ] Implement a scheduler to schedule and manage scans
-- [ ] Integrate all these tools with already existing framework
+- [ ] Combine all these tools with already existing framework
+- [ ] Integrate other
+
 
 ## Usage
 The API provides two routes:
