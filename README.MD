@@ -10,11 +10,11 @@ The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
 3. Start the API by running python api.py.
 
 ## To Do list
-- [ ] Implement a URL scan API using existing OWASP ZAP type scanners or other open source scanners.
-- [ ] Implement different vulnerability tests
-- [ ] Implement a scheduler to schedule and manage scans
-- [ ] Combine all these tools with already existing framework
-- [ ] Integrate other
+- [ ] Implement a URL scan API using existing OWASP ZAP, other open source scanners.
+- [ ] Implement different vulnerability tests.
+- [ ] Implement a scheduler to schedule and manage scans.
+- [ ] Combine all these tools with already existing framework.
+- [ ] Integrate with already existing framework.
 
 
 ## Usage
