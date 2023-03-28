@@ -13,6 +13,7 @@ The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
 The API provides two routes:
 
 ```/ping``` - GET route to test if the API is working. Returns a JSON message.
+
 ```/scan``` - POST route to initiate a vulnerability scan on a URL. Expects a JSON payload with a url parameter. Returns a JSON response with the scan results.
 
 ## Testing
