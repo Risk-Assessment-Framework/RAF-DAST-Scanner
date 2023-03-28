@@ -23,13 +23,6 @@ def add_schedule(url, scan_time):
     conn.commit()
     conn.close()
 
-def remove_schedule(schedule_id):
-    conn = sqlite3.connect(DB_NAME)
-    c = conn.cursor()
-    c.execute("DELETE FROM schedules WHERE id=?", (schedule_id,))
-    conn.commit()
-    conn.close()
-
 def get_schedules():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
