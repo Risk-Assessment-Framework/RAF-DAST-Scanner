@@ -9,6 +9,10 @@ The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
 2. Install the required packages: ```pip install -r requirements.txt```
 3. Start the API by running python api.py.
 
+## To Do list
+
+
+
 ## Usage
 The API provides two routes:
 
