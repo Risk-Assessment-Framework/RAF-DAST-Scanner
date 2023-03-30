@@ -1,9 +1,13 @@
+# import requests
 from flask import Flask, request, jsonify
 import subprocess
 import re
 
+# initialize the Flask app
 app = Flask(__name__)
 
+# List of SANS Top 25 vulnerabilities
+# SOURCE: https://www.sans.org/top25-software-errors/
 SANS_TOP_25 = [
     'Injection', 'Broken Authentication and Session Management', 'Cross-Site Scripting (XSS)',
     'Broken Access Control', 'Security Misconfiguration', 'Insecure Cryptographic Storage',
@@ -16,3 +20,43 @@ SANS_TOP_25 = [
     'Security Decisions Via Untrusted Inputs', 'Web and Application Server Misconfiguration'
 ]
 
+
+# define a route for the web application
+@app.route('/scan', methods=['POST'])
+def scan_website():
+    # Get the URL to scan from the request data
+    url = request.json['url']
+
+    # Run the Nikto scanner and capture the output
+    # output = subprocess.check_output(['nikto','-Format', 'txt']) : not working on my machine
+    output = subprocess.check_output(['nikto', '-h', url, '-o', '-', '-Format', 'txt'])
+
+    # Extract the vulnerability information from the Nikto output
+    vulnerabilities = []
+    for line in output.splitlines():
+        # Check if the line contains a vulnerability description
+        match = re.search(r'\+[^\n]*\b(OSVDB-\d+|CVE-\d+-\d+)\b', line.decode('utf-8'))
+        if not match:
+            continue
+
+        # Extract the severity level and vulnerability name from the line
+        severity = re.search(r'\s+Severity: ([^,]+),', line.decode('utf-8')).group(1)
+        vulnerability = match.group(1)
+
+        # Check if the vulnerability matches any of the SANS Top 25 list items
+        for item in SANS_TOP_25:
+            if item.lower() in line.decode('utf-8').lower():
+                # Add the vulnerability to the list to be matched against the SANS Top 25 list
+                vulnerabilities.append({
+                    'name': vulnerability,
+                    'severity': severity,
+                    'description': line.decode('utf-8').strip()
+                })
+                break
+
+    # Return the list of vulnerabilities found
+    return jsonify(vulnerabilities)
+
+# start the Flask app
+if __name__ == '__main__':
+    app.run(debug=True)
