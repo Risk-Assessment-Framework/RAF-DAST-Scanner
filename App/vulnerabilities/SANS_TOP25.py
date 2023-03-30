@@ -34,7 +34,7 @@ def scan_website():
     # Extract the vulnerability information from the Nikto output
     vulnerabilities = []
     for line in output.splitlines():
-        # Check if the line contains a vulnerability description
+        # Check if the line contains a vulnerability description becuase we need to extract the vulnerability name from it
         match = re.search(r'\+[^\n]*\b(OSVDB-\d+|CVE-\d+-\d+)\b', line.decode('utf-8'))
         if not match:
             continue
@@ -60,3 +60,14 @@ def scan_website():
 # start the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+# for line in output.splitlines():
+ # The vulnerability name is either an OSVDB ID or a CVE ID
+        # The OSVDB ID is in the format OSVDB-XXXXX
+        # The CVE ID is in the format CVE-XXXX-XXXX
+        # The OSVDB ID is deprecated and is no longer used, but it is still present in the Nikto output
+        # The CVE ID is the current standard for vulnerability naming
+        # The OSVDB ID is used as a fallback in case the CVE ID is not present
+        # The OSVDB ID is also used for vulnerabilities that are not assigned a CVE ID
