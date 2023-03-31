@@ -1,8 +1,14 @@
 # RAF DAST 
 RAF DAST tools are designed to perform comprehensive security testing on web applications and APIs, using a range of automated testing techniques such as vulnerability scanning, penetration testing, and fuzzing. These tools typically include advanced features such as support for custom scripts, integration with other security tools, and detailed reporting capabilities.
 
-
-The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
+## Folder Structure
+The repository has the following folder structure:
+1 .api/ - Contains the REST API implementation. 
+2. agents/ - Contains the agent implementation.
+3. vulnerability.py - Contains the implementation of various vulnerability scanners.
+4. server.py - Contains the implementation of the server to receive and store scan reports.
+5. test.py - Contains test cases for the REST API.
+6. The REST API uses OWASP ZAP and Nikto scanners for vulnerability scanning.
 
 ## Installation
 1. Clone the repository to your local machine.
