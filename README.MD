@@ -3,7 +3,7 @@ RAF DAST tools are designed to perform comprehensive security testing on web app
 
 ## Folder Structure
 The repository has the following folder structure:
-1 .api/ - Contains the REST API implementation.
+1 .api/ - Contains the REST API implementation. 
 2. agents/ - Contains the agent implementation.
 3. vulnerability.py - Contains the implementation of various vulnerability scanners.
 4. server.py - Contains the implementation of the server to receive and store scan reports.
