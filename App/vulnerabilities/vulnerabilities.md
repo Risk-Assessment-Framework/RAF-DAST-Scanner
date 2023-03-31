@@ -20,3 +20,10 @@ SANS (SysAdmin, Audit, Network, Security) is a cooperative research and educatio
 
 ### ISO 27001
 
+ISO 27001, also known as ISO/IEC 27001, is an information security standard published by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC).
+Some common vulnerabilities that ISO 27001 aims to address include:
+1. Weak passwords
+2. Malware
+3. Social engineering
+4. Unauthorized access
+5. Data breaches
