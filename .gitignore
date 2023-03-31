@@ -3,3 +3,6 @@ Frontend/src-old
 Frontend/src/configs/firebase-config.js
 .vscode
 __pycache__
+
+
+Add .env file to the root directory of the project 
