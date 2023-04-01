@@ -18,6 +18,12 @@ CVE (Common Vulnerabilities and Exposures) is a list of publicly disclosed cyber
 
 SANS (SysAdmin, Audit, Network, Security) is a cooperative research and education organization focused on cybersecurity training and awareness. The SANS Top 25 list includes the most dangerous programming errors that can lead to serious vulnerabilities. The DAST tool uses **Nikto scanner** to scan for these vulnerabilities and **matches them with the SANS Top 25 list**.
 
-### To Do
+### ISO 27001
 
-Build an API to scan for ISO 22k vulnerabilities.
+ISO 27001, also known as ISO/IEC 27001, is an information security standard published by the International Organization for Standardization (ISO) and the International Electrotechnical Commission (IEC).
+Some common vulnerabilities that ISO 27001 aims to address include:
+1. Weak passwords
+2. Malware
+3. Social engineering
+4. Unauthorized access
+5. Data breaches

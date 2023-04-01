@@ -1,0 +1,12 @@
+# for all
+json==2.0.9
+Flask==2.1.1
+requests==2.26.0
+
+
+# for scheduler
+datetime
+sqlite3
+time
+requests
+# need versions of these packages
