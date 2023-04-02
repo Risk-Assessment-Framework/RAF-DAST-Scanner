@@ -33,7 +33,8 @@ class OWASPScanner:
     def port_scan(self):
         self.zap.portscan.scan(self.target, '0-65535')
         while int(self.zap.portscan.status) < 100:
-            print('Port Scan progress %: {}'.format(self.zap.portscan.status))
+            print('Port Scan progress %: {}'.format(
+                self.zap.portscan.status))
             time.sleep(10)
 
         print('Port Scan complete')
@@ -46,7 +47,8 @@ class NiktoScanner:
 
     def ssl_scan(self):
         # Run Nikto scanner command and get output
-        output = subprocess.check_output(['nikto', '-h', self.target, '-ssl'])
+        output = subprocess.check_output(
+            ['nikto', '-h', self.target, '-ssl'])
         output = output.decode('utf-8')
 
         # Return the output
