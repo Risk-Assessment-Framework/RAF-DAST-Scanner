@@ -5,12 +5,11 @@ export const demouser = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 export const navigation = [
-  { name: "Reports", href: "/Frontend/src/pages/Reports.jsx", current: true },
-  { name: "Tools", href: "/Frontend/src/pages/AuthUser/Tools.jsx", current: false },
-  { name: "Scheduled Scans", href: "/Frontend/src/pages/AuthUser/ScheduledScans.jsx", current: false },
-  { name: "Resources", href: "/Frontend/src/pages/AuthUser/Resources.jsx", current: false },
-  { name: "Documentation", href: "/Frontend/src/pages/Documentation.jsx", current: false },
-  { name: "Support", href: "/Frontend/src/pages/AuthUser/Support.jsx", current: false },
+  { name: "Report", href: "/dashboard", current: false },
+  { name: "History", href: "/history", current: true },
+  { name: "Resources", href: "#", current: false },
+  { name: "Documentation", href: "#", current: false },
+  { name: "Support", href: "#", current: false },
 ];
 export const userNavigation = [
   // { name: "Your Profile", href: "#" },
@@ -93,6 +92,77 @@ export const auditData = [
       },
     ],
   },
+];
+
+export const auditHistoryData = {
+  title: "Audit History",
+  data: [
+    {
+      id: 1,
+      title: "https://example.com",
+      type: "High",
+      category: "6th March 2023",
+      solutions: [
+        {
+          name: "Description",
+          description:
+            'The x-xss-protection header is designed to enable the cross-site scripting (XSS) filter built into modern web browsers. Explicitly setting X-XSS-Protection header to "0" will allow an attacker to perform XSS attack on your users..',
+          href: "#",
+        },
+        {
+          name: "Remediation",
+          description:
+            "The recommended configuration is to set this header to the following value, which will enable the XSS protection and instruct the browser to block the response in the event that a malicious script has been inserted from user input, instead of sanitizing. x-xss-protection: 1; mode=block.",
+          href: "#",
+        },
+      ],
+    },
+    {
+      id: 2,
+      title: "https://example.com",
+      type: "High",
+      category: "5th March 2023",
+      solutions: [
+        {
+          name: "Description",
+          description:
+            'The x-xss-protection header is designed to enable the cross-site scripting (XSS) filter built into modern web browsers. Explicitly setting X-XSS-Protection header to "0" will allow an attacker to perform XSS attack on your users..',
+          href: "#",
+        },
+        {
+          name: "Remediation",
+          description:
+            "The recommended configuration is to set this header to the following value, which will enable the XSS protection and instruct the browser to block the response in the event that a malicious script has been inserted from user input, instead of sanitizing. x-xss-protection: 1; mode=block.",
+          href: "#",
+        },
+      ],
+    },
+  ],
+};
+
+export const people = [
+  {
+    number: 12345,
+    website: "https://example.com",
+    status: "Completed",
+    createdAt: "06-03-2023",
+    updatedAt: "06-03-2023",
+  },
+  {
+    number: 23456,
+    website: "https://example.com",
+    status: "Pending",
+    createdAt: "05-03-2023",
+    updatedAt: "06-03-2023",
+  },
+  {
+    number: 23456,
+    website: "https://example.com",
+    status: "Stopped",
+    createdAt: "01-03-2023",
+    updatedAt: "03-03-2023",
+  },
+  // More people...
 ];
 
 export const scannerData = {
