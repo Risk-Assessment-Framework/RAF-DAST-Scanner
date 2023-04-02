@@ -5,11 +5,32 @@ export const demouser = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 export const navigation = [
-  { name: "Report", href: "/dashboard", current: false },
-  { name: "History", href: "/history", current: true },
-  { name: "Resources", href: "#", current: false },
-  { name: "Documentation", href: "#", current: false },
-  { name: "Support", href: "#", current: false },
+  { name: "Reports", href: "/Frontend/src/pages/Reports.jsx", current: true },
+  {
+    name: "Tools",
+    href: "/Frontend/src/pages/AuthUser/Tools.jsx",
+    current: false,
+  },
+  {
+    name: "Scheduled Scans",
+    href: "/Frontend/src/pages/AuthUser/ScheduledScans.jsx",
+    current: false,
+  },
+  {
+    name: "Resources",
+    href: "/Frontend/src/pages/AuthUser/Resources.jsx",
+    current: false,
+  },
+  {
+    name: "Documentation",
+    href: "/Frontend/src/pages/Documentation.jsx",
+    current: false,
+  },
+  {
+    name: "Support",
+    href: "/Frontend/src/pages/AuthUser/Support.jsx",
+    current: false,
+  },
 ];
 export const userNavigation = [
   // { name: "Your Profile", href: "#" },
