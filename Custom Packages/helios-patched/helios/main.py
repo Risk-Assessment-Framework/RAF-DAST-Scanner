@@ -5,16 +5,22 @@
 # This will start the helios framework
 
 import argparse
+import sys
 import helios
 
 
-def main(url,scan_type):
+def main(url, scan_type):
     parser = argparse.ArgumentParser("helios")
-    parser.add_argument('-u', '--url', help='URL to start with', dest='url', default=None)
-    parser.add_argument('--urls', help='file with URL\'s to start with', dest='urls', default=None)
-    parser.add_argument('--user-agent', help='Set the user agent', dest='user_agent', default=None)
-    parser.add_argument('-a', '--all', help='Run everything', dest='allin', default=None, action='store_true')
-    parser.add_argument('-o', '--output', help='Output file to write to (JSON)', dest='outfile', default=None)
+    parser.add_argument(
+        '-u', '--url', help='URL to start with', dest='url', default=None)
+    parser.add_argument(
+        '--urls', help='file with URL\'s to start with', dest='urls', default=None)
+    parser.add_argument('--user-agent', help='Set the user agent',
+                        dest='user_agent', default=None)
+    parser.add_argument('-a', '--all', help='Run everything',
+                        dest='allin', default=None, action='store_true')
+    parser.add_argument(
+        '-o', '--output', help='Output file to write to (JSON)', dest='outfile', default=None)
 
     group_driver = parser.add_argument_group(title="Chromedriver Options")
     group_driver.add_argument('-d', '--driver', help='Run WebDriver for advanced discovery',
@@ -31,8 +37,10 @@ def main(url,scan_type):
                               dest='proxy_port', default=None)
 
     group_crawler = parser.add_argument_group(title="Crawler Options")
-    group_crawler.add_argument('-c', '--crawler', help='Enable the crawler', dest='use_crawler', action='store_true')
-    group_crawler.add_argument('--max-urls', help='Set max urls for the crawler', dest='maxurls', default=200)
+    group_crawler.add_argument(
+        '-c', '--crawler', help='Enable the crawler', dest='use_crawler', action='store_true')
+    group_crawler.add_argument(
+        '--max-urls', help='Set max urls for the crawler', dest='maxurls', default=200)
     group_crawler.add_argument('--scopes',
                                help='Extra allowed scopes, comma separated hostnames (* can be used to wildcard)',
                                dest='scopes', default=None)
@@ -70,7 +78,8 @@ def main(url,scan_type):
                              dest='login_type', default=None)
     group_login.add_argument('--login-creds', help='Basic Auth credentials username:password',
                              dest='login_creds', default=None)
-    group_login.add_argument('--login-url', help='Set the URL to post to (forms)', dest='login_url', default=None)
+    group_login.add_argument(
+        '--login-url', help='Set the URL to post to (forms)', dest='login_url', default=None)
     group_login.add_argument('--login-data', help='Set urlencoded login data (forms)',
                              dest='login_data', default=None)
     group_login.add_argument('--token-url', help='Get CSRF tokens from this page (default login-url)',
@@ -85,30 +94,37 @@ def main(url,scan_type):
     group_adv.add_argument('--sslverify', default=False, action="store_true", dest="sslverify",
                            help="Enable SSL verification (requests will fail without proper cert)")
 
-    group_adv.add_argument('--database', help='The SQLite database to use', dest='db', default="helios.db")
+    group_adv.add_argument(
+        '--database', help='The SQLite database to use', dest='db', default="helios.db")
     group_adv.add_argument('-v', '--verbose', dest="verbose", default=False, action="store_true",
                            help="Show verbose stuff")
 
     group_msf = parser.add_argument_group(title="Metasploit Options")
     group_msf.add_argument('--msf', help='Enable the msfrpcd exploit module', dest='msf', default=False,
                            action='store_true')
-    group_msf.add_argument('--msf-host', help='Set the msfrpcd host', dest='msf_host', default="localhost")
-    group_msf.add_argument('--msf-port', help='Set the msfrpcd port', dest='msf_port', default="55553")
+    group_msf.add_argument(
+        '--msf-host', help='Set the msfrpcd host', dest='msf_host', default="localhost")
+    group_msf.add_argument(
+        '--msf-port', help='Set the msfrpcd port', dest='msf_port', default="55553")
     group_msf.add_argument('--msf-creds', help='Set the msfrpcd username:password',
                            dest='msf_creds', default="msf:msfrpcd")
-    group_msf.add_argument('--msf-endpoint', help='Set a custom endpoint URI', dest='msf_uri', default="/api/")
-    group_msf.add_argument('--msf-nossl', help='Disable SSL', dest='msf_nossl', default=False)
+    group_msf.add_argument(
+        '--msf-endpoint', help='Set a custom endpoint URI', dest='msf_uri', default="/api/")
+    group_msf.add_argument('--msf-nossl', help='Disable SSL',
+                           dest='msf_nossl', default=False)
     group_msf.add_argument('--msf-start', help='Start msfrpcd if not running already',
                            dest='msf_autostart', default=False, action='store_true')
-    
-    if(scan_type=="1"):
-        l=['-u',url,'-c','-s','-o','json']
-    elif(scan_type=="2"):
-        l=['-u',url,'-c','-s','--options','"discovery,passive"','--adv','-o','json']
-    elif(scan_type=="3"):
-        l=['-u',url,'-c','-s','-o','json','--options','all','--max-url','1000']
-    elif(scan_type=="4"):
-        l=['-u',url,'-s','-o','json']
+
+    if (scan_type == "1"):
+        l = ['-u', url, '-c', '-s', '-o', 'json']
+    elif (scan_type == "2"):
+        l = ['-u', url, '-c', '-s', '--options',
+             '"discovery,passive"', '--adv', '-o', 'json']
+    elif (scan_type == "3"):
+        l = ['-u', url, '-c', '-s', '-o', 'json',
+             '--options', 'all', '--max-url', '1000']
+    elif (scan_type == "4"):
+        l = ['-u', url, '-s', '-o', 'json']
 
     opts = parser.parse_args(l)
     urls = []
@@ -119,7 +135,8 @@ def main(url,scan_type):
         else:
             with open(opts.urls, 'r') as urlfile:
                 urls = [x.strip() for x in urlfile.read().strip().split('\n')]
-                print("Got %d start URL's from file %s" % (len(urls), opts.urls))
+                print("Got %d start URL's from file %s" %
+                      (len(urls), opts.urls))
     else:
         urls = [opts.url]
 
@@ -139,4 +156,4 @@ def main(url,scan_type):
 
 
 if __name__ == "__main__":
-    return main()
+    main()
