@@ -1,12 +1,16 @@
 import zapv2
 import time
 import subprocess
+import os
 
 
 class OWASPScanner:
     def __init__(self, target):
         self.target = target
+        zapApiKey = os.environ.get('API_KEY_ZAP')
+        print(zapApiKey)
         self.zap = zapv2.ZAPv2(
+            apikey=zapApiKey,
             proxies={'http': 'http://127.0.0.1:8080', 'https': 'http://127.0.0.1:8080'})
 
     # This scan returns the list of all urls within the target
