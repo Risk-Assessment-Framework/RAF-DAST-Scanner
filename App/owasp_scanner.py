@@ -15,9 +15,10 @@ class OWASPScanner:
 
     # This scan returns the list of all urls within the target
     def spider(self):
-        self.zap.spider.scan(self.target)
-        while int(self.zap.spider.status) < 100:
-            print('Spider progress %: {}'.format(self.zap.spider.status))
+        spiderScanId = self.zap.spider.scan(self.target)
+        while int(self.zap.spider.status(spiderScanId)) < 100:
+            print('Spider progress %: {}'.format(
+                self.zap.spider.status(spiderScanId)))
             time.sleep(10)
 
         print('Spider complete')
