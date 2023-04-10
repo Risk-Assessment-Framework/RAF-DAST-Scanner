@@ -1,19 +1,21 @@
 import json
 import time
 from zapv2 import ZAPv2
+import webbrowser
+import os
 
-def read_credentials_file():
-    with open('credentials.json', 'r') as f:
+def read_credentials_file(file):
+    with open(file, 'r') as f:
         credentials = json.load(f)
     apikey = credentials['apikey']
     http_proxy = credentials['http_proxy']
     https_proxy = credentials['https_proxy']
-    return apikey, http_proxy, https_proxy
+    return [apikey, http_proxy, https_proxy]
 
 # Connect to the ZAP API using the API key and proxy configuration
-def connect_zap(apikey, http_proxy, https_proxy):
-    proxies = {'http': http_proxy, 'https': https_proxy}
-    return ZAPv2(apikey=apikey, proxies=proxies)
+def connect_zap(list):
+    proxies = {'http': list[1], 'https': list[2]}
+    return ZAPv2(apikey=list[0], proxies=proxies)
 
 # Owasp Top 10
 def owasp_top_10_scan(zap,target_url):
@@ -32,19 +34,14 @@ def owasp_top_10_scan(zap,target_url):
 
 # cve_mitre
 def cve_mitre_scan(zap,target_url):
-    zap.ascan.disable_all_scanners()
-    zap.ascan.enable_scanners(['0'])
-    zap.ascan.scan(target_url)
-    scan_id = zap.ascan.scan(target_url)
-    while scan_id and int(zap.ascan.status(scan_id)) < 100:
-        time.sleep(5)
-    cves = zap.scripts.scripts(scriptType='cve').splitlines()
-    mitres = zap.scripts.scripts(scriptType='mitre').splitlines()
+    cves="test1"
+    mitres="test2"
 
     vulnerabilities = {}
     vulnerabilities['cve'] = cves
     vulnerabilities['mitre'] = mitres
     return json.dumps(vulnerabilities)
+    
 
 # SANS Top 25
 def sans_top_25_errors_scan(zap,target_url):
@@ -69,27 +66,27 @@ def iso_27001_scan(zap,target_url):
     return report
 
 # generate report
-def report_generator(zap,scan_list,target_url):
-    report={}
-    for i in scan_list:
-        if i == 0:
-                report["owasp_top_10"]=owasp_top_10_scan(zap,target_url)
-                report["cve_mitre"]=cve_mitre_scan(zap,target_url)
-                report["sans_top_25"]=sans_top_25_errors_scan(zap,target_url)
-                report["iso_27k"]=iso_27001_scan(zap,target_url)
-        elif i == 1:
-                report["owasp_top_10"]=owasp_top_10_scan(zap,target_url)
-        elif i == 2:
-                report["cve_mitre"]=cve_mitre_scan(zap,target_url)
-        elif i == 3:
-                report["sans_top_25"]=sans_top_25_errors_scan(zap,target_url)
-        elif i == 4:
-                report["iso_27k"]=iso_27001_scan(zap,target_url)
+def report_generator(zap,i,target_url):
+        if i == "1":
+                owasp_top_10_scan(zap,target_url)
+        elif i == "2":
+                cve_mitre_scan(zap,target_url)
+        elif i == "3":
+                sans_top_25_errors_scan(zap,target_url)
+        elif i == "4":
+                iso_27001_scan(zap,target_url)
         else:
-                report["error"]="Invalid scan type"
-    return report
-        
-zap=connect_zap(read_credentials_file())
-target_url="https://example.com"
-# Testing the script
-print(report_generator(zap,[1],target_url))
+                print("Invalid standard type")
+
+def spider(zap,target_url):
+    zap.spider.scan(target_url)
+    time.sleep(10)
+
+def report_html(zap):
+    report_html = zap.core.htmlreport()
+    with open('report.html', 'w') as f:
+        f.write(report_html)
+
+    file = "report.html"
+    filename = 'file:///'+os.getcwd()+'/' + file
+    webbrowser.open_new_tab(filename)
