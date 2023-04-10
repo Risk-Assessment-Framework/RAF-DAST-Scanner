@@ -1,31 +1,35 @@
-# Agent Scanner using ZAP API
-This project is a Flask API that allows you to run Agent based security scans using the OWASP ZAP security tool. It provides the following scans:
+# ZAP Scanner
 
-* OWASP Top 10
-* CVE-Mitre
-* SANS Top 25
-* ISO 27K
+ZAP Scanner is a Python script that uses the OWASP ZAP API to scan web applications for security vulnerabilities based on different Industry Standards.
 
-The API is based on the zapv2 module, which provides an interface to the ZAP API.
+## Requirements
 
-## API Endpoints
-This API has the following endpoints:
+- Python 3.x
+- OWASP ZAP API key
+- `credentials.json` file
 
-### POST /scan
-This endpoint initiates a security scan. It accepts a JSON payload with the following fields:
+## Installation
 
-* url (string): the URL of the website to scan.
-* scans (list of integers): the list of scans to perform. Valid scan IDs are:
-  *  `0`: perform all scans.
-  *  `1`: perform the OWASP Top 10 scan.
-  *  `2`: perform the CVE-Mitre scan.
-  *  `3`: perform the SANS Top 25 scan.
-  *  `4`: perform the ISO 27K scan.
- 
- ## Example Payload
- ```
- {
-    "url": "https://example.com",
-    "scans": [1, 2]
-}
-```
+1. Install the required dependencies: `pip install -r requirements.txt`
+
+## Usage
+
+```python main.py -c <credentials_file_path> -u <target_url> -s <scan_level>```
+
+## Arguments
+
+- `-c, --credentials`: File path for `credentials.json` file containing API key and proxy configuration.
+- `-u, --url`: Target URL for the web application to be scanned.
+- `-s, --sl`: Scan level (1-4) based on different security standards.
+
+## Supported Security Standards
+
+1. OWASP Top 10
+2. CVE-Mitre
+3. SANS Top 25 Errors
+4. ISO 27K
+
+## Output
+
+The script generates an HTML report in the project directory with the results of the scan and also opens it for the user.
+
