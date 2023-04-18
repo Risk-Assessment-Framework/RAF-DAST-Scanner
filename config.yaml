@@ -1,0 +1,19 @@
+# Project information
+project:
+  name: RAF DAST Scanner
+  version: 1.0.0
+  description: An Agent Based and Agentless scanner.
+  authors:
+    - name: Shubhayu Majumdar
+      email: shubhayumajumdar64@gmail.com
+
+# Configuration settings
+settings:
+  debug: False
+  log_file: /path/to/log/file.log
+  zap_settings:
+    zap_api_key: your_zap_api_key_here
+    http_proxies:
+      - http://127.0.0.1:8080
+    https_proxies:
+      - http://127.0.0.1:8080
