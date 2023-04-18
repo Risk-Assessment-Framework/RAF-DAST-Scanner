@@ -1,5 +1,0 @@
-json==2.0.9
-requests==2.26.0
-Flask==2.1.0
-python-owasp-zap-v2.4==0.0.21
-DateTime==4.9
