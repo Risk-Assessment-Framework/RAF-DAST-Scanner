@@ -4,7 +4,7 @@ import requests
 
 CVE_API_URL = 'https://cve.circl.lu/api/cve/'
 
-def scan_ports(target_ip, scan_args):
+def scan_ports(target_ip="127.0.0.1", scan_args="-sV -O -p 1-65535"):
     # create nmap PortScanner object
     scanner = nmap.PortScanner()
 
