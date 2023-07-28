@@ -10,7 +10,7 @@ project:
 # Configuration settings
 settings:
   debug: False
-  log_file: /path/to/log/file.log
+  log_file: Logger/raf.log
   zap_settings:
     zap_api_key: your_zap_api_key_here
     http_proxies:
