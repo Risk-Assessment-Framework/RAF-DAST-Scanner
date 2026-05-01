@@ -142,7 +142,7 @@ def main(url, scan_type):
 
     instance = helios.Helios(opts)
     try:
-        instance.run(urls, opts.scopes)
+        return instance.run(urls, opts.scopes)
     except KeyboardInterrupt:
         instance.logger.warning("KeyboardInterrupt received, shutting down")
         instance.db.end()

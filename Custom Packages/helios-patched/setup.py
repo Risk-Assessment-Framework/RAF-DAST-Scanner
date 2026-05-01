@@ -37,7 +37,7 @@ setup(
         'console_scripts': ['helios=helios.main:main', 'helios-update-db=helios.webapp.databases.update:main'],
     },
     install_requires=[
-        'pyOpenSSL>=0.14'
+        'pyOpenSSL>=0.14',
         'beautifulsoup4',
         'requests',
         'selenium',
